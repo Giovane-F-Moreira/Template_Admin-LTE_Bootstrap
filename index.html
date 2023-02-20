@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Login</title>
+
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="vendors/animate.css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="build/css/custom.min.css" rel="stylesheet">
+
+    <style>
+      .box{
+        /* From https://css.glass */
+        background: rgba(255, 255, 255, 0.19);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(15.2px);
+        -webkit-backdrop-filter: blur(15.2px);
+        border: 1px solid rgba(255, 255, 255, 0.36);       
+      }
+
+      h1{
+        color: rgb(236, 124, 83)
+      }
+      
+      p, a {
+        color: rgb(255, 255, 255);
+      }
+
+      .btn {
+        border: 2px solid rgba(27, 27, 27, 0.36);
+        color: rgb(255, 255, 255);
+      }
+
+      btn:visited, btn:link, btn:hover, btn:active{
+        color: rgb(255, 255, 255);
+      }
+
+      a:visited, a:link, a:hover, a:active{       
+        color: rgb(255, 255, 255);
+      }
+
+    </style>
+  </head>
+  <!-- ./images/nd209-robond-hero.png 
+    https://images.unsplash.com/photo-1508175800969-525c72a047dd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8d2FsbCUyMGV8ZW58MHx8MHx8&w=1000&q=80
+    https://s1.1zoom.me/big0/406/367042-walle.jpg
+    data:image/jpeg;base64,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
+    https://s1.1zoom.me/big0/23/367043-walle.jpg
+    https://images.alphacoders.com/112/112463.jpg
+    https://wallpaperaccess.com/full/1291996.jpg
+  -->
+  <body class="login" style="background-image: url(https://wallpaperaccess.com/full/1291996.jpg); background-size: cover;">
+    <div>
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content box container">
+            <form>
+              <h1>Login</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="Username" required/>
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="Password" required/>
+              </div>
+              <div>
+                <a class="btn btn-default submit" href="./production/index.html">Log in</a>
+                <a class="reset_pass" href="#">Lost your password?</a>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">New to site?
+                  <a href="#signup" class="to_register"> Create Account </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 4 template. Privacy and Terms</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <div id="register" class="animate form registration_form">
+          <section class="login_content">
+            <form>
+              <h1>Create Account</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="Username" required="" />
+              </div>
+              <div>
+                <input type="email" class="form-control" placeholder="Email" required="" />
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="Password" required="" />
+              </div>
+              <div>
+                <a class="btn btn-default submit" href="./production/index.html">Submit</a>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">Already a member ?
+                  <a href="#signin" class="to_register"> Log in </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 4 template. Privacy and Terms</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
